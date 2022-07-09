@@ -1,7 +1,18 @@
 /*
-given N balloons, each with a number of coins associated with it. On bursting a balloon i, the number of coins gained is 
+Given N balloons, each with a number of coins associated with it. On bursting a balloon i, the number of coins gained is 
 equal to A[i-1]*A[i]*A[i+1]. Also, balloons i-1 and i+1 now become adjacent. Find the maximum possible profit earned after 
-bursting all the balloons. Assume an extra 1 at each boundary. 
+bursting all the balloons. Assume an extra 1 at each boundary as padding. (eg: For [1,2,3] -> [1,1,2,3,1]
+Input : 5, 10
+Output : 60
+Explanation - First Burst 5, Coins = 1*5*10
+              Then burst 10, Coins+= 1*10*1
+              Total = 60
+
+Input : 1, 2, 3, 4, 5
+Output : 110
+
+Dynamic Programming - Time Complexity = O(N^3) - 1 second
+Recursive - TC = O(N!N) - 3168 years
 */
 
 #include <bits/stdc++.h>
