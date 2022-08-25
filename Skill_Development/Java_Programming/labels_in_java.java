@@ -16,3 +16,5 @@ public class Main
 		    System.out.println("Bye Bye");
 	}
 }
+
+// Output: 2
