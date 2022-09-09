@@ -1,3 +1,4 @@
+---Refer the below schema and create the table mark
 CREATE TABLE Mark
 value NUMBER, subject_id NUMBER, 
 student id NUMBER, 
