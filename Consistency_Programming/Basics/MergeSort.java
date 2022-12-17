@@ -1,49 +1,54 @@
 import java.util.Scanner;
 
-public class Practice {
+public class Merge_Sort {
 
-    public static void conquer(int arr[], int si, int mid, int ei) {
+    //TC = O(nlogn)
+
+    public static void conquer(int arr[], int si, int mid, int ei){
         int merged[] = new int[ei - si + 1];
 
         int idx1 = si;
         int idx2 = mid+1;
-        int x=0;      
-        
-        while(idx1 <= mid && idx2 <=ei) {
-            if(arr[idx1] <= arr[idx2]){
+        int x = 0;          // for new array
+
+        while(idx1 <= mid && idx2 <= ei) //sort until it reaches last ele in arr
+        { 
+            if(arr[idx1] <= arr[idx2]) {
                 merged[x++] = arr[idx1++];
             } else {
                 merged[x++] = arr[idx2++];
             }
         }
 
-        while(idx1 <= mid){
+        //if elements are left in the array which is already sorted. 
+        // -- we add those eles to end of the merged arr
+
+        //either of these while loop executes or none
+        while(idx1 <= mid) {
             merged[x++] = arr[idx1++];
         }
-        while(idx2 <= ei){
+        while(idx2 <= ei) {
             merged[x++] = arr[idx2++];
-        }        
+        }
 
-        for(int i=0, j=si; i<merged.length; i++,j++)
+        //copy elements to original array
+        for(int i=0, j=si; i<merged.length; i++, j++)
             arr[j] = merged[i];
-
 
     }
 
-
-    public static void divide(int arr[], int si, int ei) {
+    public static void divide(int arr[], int si, int ei){
         if(si >= ei) {
             return;
-        }        
-        int mid = si + (ei-si)/2;
+        }
+
+        int mid = si + (ei - si)/2;
         divide(arr, si, mid);
         divide(arr, mid+1, ei);
         conquer(arr, si, mid, ei);
 
     }
-
-     
-    public static void main(String[] args) {
+    public static void main(String args[]){
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter num of elements");
         int n = sc.nextInt();
@@ -52,15 +57,12 @@ public class Practice {
         for(int i=0; i<n; i++){
             arr[i] = sc.nextInt();
         }
-
-        divide(arr, 0, n-1);
+        
+        divide(arr, 0 , n-1);
 
         for(int i=0; i<n; i++){
             System.out.print(arr[i]+ " ");
         }
-        System.out.println();    
-
-        sc.close();
+        System.out.println();
     }
-    
 }
